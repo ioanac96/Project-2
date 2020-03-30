@@ -49,19 +49,20 @@ class App extends React.Component {
     console.log(this.state);
     const action = this.state.currentAction;
     return (
+      <Router>
+        <div className="page">
+          <div className="navigation-region">
+              <Link to="/login" className={action === 'Login'? "navigation active":"navigation"} id='Login' onClick={this.currentAction('Login')}>Login</Link>
+              <Link to="/register" className={action === 'Register'? "navigation active":"navigation" } id='Register' onClick={this.currentAction('Register')}>Register</Link>
+        </div>
+        <div>
+            {
+            action === 'Login' ? <Login /> : <Register />
+            }
+        </div>
 
-      <div className="page">
-        <div className="navigation-region">
-            <div className={action === 'Login'? "navigation active":"navigation"} id='Login' onClick={this.currentAction('Login')}>Login</div>
-            <div className={action === 'Register'? "navigation active":"navigation" } id='Register' onClick={this.currentAction('Register')}>Register</div>
-       </div>
-       <div>
-          {
-          action === 'Login' ? <Login /> : <Register />
-          }
-      </div>
-
-      </div>
+        </div>
+      </Router>
       
     
       );
