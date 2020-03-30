@@ -5,8 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const options = [
   { value: 'female', label: 'Female' },
-  { value: 'male', label: 'Male' },
-  { value: 'cat', label: 'Cat' }
+  { value: 'male', label: 'Male' }
 ]
 
 class Register extends React.Component {
@@ -46,22 +45,25 @@ class Register extends React.Component {
     return (
       <div>
         <div>
-          <input type="text" value={username} onChange={this.onInputChange('username')} placeholder="Username" />
+          <label for="username">Username:</label>
+          <input type="text" id="username" value={username} onChange={this.onInputChange('username')} placeholder="Username" />
         </div>
         <div>
-          <input type="password" value={password} onChange={this.onInputChange('password')} placeholder="Password" />
+          <label for="password">Password:</label>
+          <input type="password" id= "password" value={password} onChange={this.onInputChange('password')} placeholder="Password" />
         </div>
         <div>
-          <input type="text" value={name} onChange={this.onInputChange('name')} placeholder="Name" />
+          <label for="name">Name:</label>
+          <input type="text" id="name" value={name} onChange={this.onInputChange('name')} placeholder="Name" />
         </div>
         <div>
-          <Select value={this.state.gender} onChange={this.onChange('gender')} options={options}/>
+          <Select className="select" classNamePrefix="select-prefix" value={this.state.gender} onChange={this.onChange('gender')} options={options}/>
         </div>
         <div>
           <DatePicker onChange={this.onChange('date')} selected={this.state.date} showYearDropdown />
         </div>
-        <div>
-          <input type="submit" />
+        <div className="submit">
+          <button>Submit</button>
         </div>
       </div>
       

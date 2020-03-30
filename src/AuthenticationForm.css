@@ -1,0 +1,110 @@
+.navigation-region {
+    display: flex;
+    flex-direction: row;
+    background-color: Black;
+    color: white;
+    width: 100%;
+    margin-bottom: 5px;
+    
+  }
+  
+  .navigation {
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .navigation:hover{
+    background-color:grey;
+    font-size: 16px;
+    
+  }
+  
+  .active {
+    background-color: grey;
+  }
+
+  .submit {
+      display: flex;
+      justify-content: center;
+  }
+
+
+  label {
+    margin: 10px 0px 0px 0px;
+    font-size: medium;
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    margin: 0px 0px 8px 0px; 
+    border: 1px solid black;
+    color: black;   
+    font-size: 15px; 
+    padding: 7px 7px;
+  }
+
+  button {
+      padding: 6px 10px;
+      font-size: 16px;
+      border-radius: 4px;
+      background-color: black;
+      color: white;
+  }
+
+  button:focus {
+    outline-color: #008B8B;  
+  }
+  
+
+  input[type=text]:focus {
+      outline-color: #008B8B;     
+  }
+
+  input[type=password]:focus {
+    outline-color: #008B8B;     
+}
+
+.select .select-prefix__control {
+    border: 1px solid black;
+    border-radius: 0px;
+    margin: 0px 0px 8px 0px;
+}
+
+.select-prefix__indicators {
+    background-color: black;
+    color: white;
+}
+
+.select .select-prefix__option {
+    color: black;
+}
+    
+    
+.select .select-prefix__option--is-focused {
+    background-color: black;
+    color: white;
+}
+
+.select .select-prefix__option--is-selected {
+    background-color: grey;
+}
+
+.select .select-prefix__option:active {
+    background-color: black;
+}
+
+.select .select-prefix__control--is-focused {
+    box-shadow: 0 0 0 1px #008B8B;
+    border-color: unset;
+}
+
+.select .select-prefix__control--is-focused:hover {
+    border-color: unset;
+}
+
+.error {
+  margin: 10px 0px;
+  color: red;
+}
