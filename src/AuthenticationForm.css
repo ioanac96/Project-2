@@ -1,10 +1,11 @@
 .navigation-region {
     display: flex;
     flex-direction: row;
-    background-color: Black;
-    color: white;
+    background-color: #124559;
+    color: #F7FFF7;
     width: 100%;
     margin-bottom: 5px;
+    text-align: center;
     
   }
   
@@ -12,17 +13,18 @@
     padding: 10px;
     font-size: 16px;
     text-decoration: none;
-    color: white;
+    color: #F7FFF7;
+    width: 50%;
   }
   
   .navigation:hover{
-    background-color:grey;
+    background-color: #598392;
     font-size: 16px;
     
   }
   
   .active {
-    background-color: grey;
+    background-color: #598392;
   }
 
   .submit {
@@ -34,69 +36,72 @@
   label {
     margin: 10px 0px 0px 0px;
     font-size: medium;
+    color:  #01161E;
   }
 
   input[type=text], input[type=password] {
     width: 100%;
     margin: 0px 0px 8px 0px; 
-    border: 1px solid black;
-    color: black;   
+    border: 1px solid #01161E;
+    color: #01161E;   
     font-size: 15px; 
     padding: 7px 7px;
   }
 
-  button {
-      padding: 6px 10px;
-      font-size: 16px;
-      border-radius: 4px;
-      background-color: black;
-      color: white;
+  .submit button {
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #124559;
+    color: #F7FFF7;
+    margin-right: 60px;
+    margin-bottom: 10px;
   }
 
   button:focus {
-    outline-color: #008B8B;  
+    outline-color: #598392;  
   }
   
 
   input[type=text]:focus {
-      outline-color: #008B8B;     
+      outline-color: #598392;     
   }
 
   input[type=password]:focus {
-    outline-color: #008B8B;     
+    outline-color: #598392;     
 }
 
 .select .select-prefix__control {
-    border: 1px solid black;
+    border: 1px solid #01161E;
     border-radius: 0px;
     margin: 0px 0px 8px 0px;
 }
 
 .select-prefix__indicators {
-    background-color: black;
-    color: white;
+    background-color: #124559;
+    color: #F7FFF7;
 }
 
 .select .select-prefix__option {
-    color: black;
+    color: #01161E;
 }
     
     
 .select .select-prefix__option--is-focused {
-    background-color: black;
-    color: white;
+    background-color: #124559;
+    color: #F7FFF7;
 }
 
 .select .select-prefix__option--is-selected {
-    background-color: grey;
+    background-color: #598392;
 }
 
 .select .select-prefix__option:active {
-    background-color: black;
+    background-color: #124559;
 }
 
 .select .select-prefix__control--is-focused {
-    box-shadow: 0 0 0 1px #008B8B;
+    box-shadow: 0 0 0 1px #598392;
     border-color: unset;
 }
 

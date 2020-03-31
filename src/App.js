@@ -15,14 +15,11 @@ class App extends React.Component {
     return (
       <Router>
         <div className="page">
-        <div className="middle-region">
           <Switch>
             <Route path="/login" component={AuthenticationForm} />
             <Route path="/register" component={AuthenticationForm} />
             <Route path="/home" component={Home} />
           </Switch>
-            
-        </div>
         </div>
       </Router>
       

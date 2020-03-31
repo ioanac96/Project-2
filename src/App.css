@@ -1,12 +1,14 @@
 * {
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
 .App {
   text-align: center;
 }
 
-.page {
+.login-page {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -23,7 +25,12 @@
 
 .middle-region {
   width: 25%;
+  box-shadow: 0px 3px 6px #AEC3B0;
+  max-width: 433px;
 }
 
+.below-part {
+  padding: 0px 10px;
+}
 
 
