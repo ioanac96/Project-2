@@ -3,11 +3,11 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Link,
   Route
 } from "react-router-dom";
 import AuthenticationForm from './AuthenticationForm';
 import Home from './Home';
+import SinglePost from './SinglePost';
 
 
 class App extends React.Component {
@@ -18,7 +18,8 @@ class App extends React.Component {
           <Switch>
             <Route path="/login" component={AuthenticationForm} />
             <Route path="/register" component={AuthenticationForm} />
-            <Route path="/home" component={Home} />
+            <Route exact path="/posts" component={Home} />
+            <Route path="/posts/:postId" component={SinglePost} />
           </Switch>
         </div>
       </Router>

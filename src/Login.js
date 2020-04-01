@@ -28,14 +28,14 @@ class Login extends React.Component {
             body: JSON.stringify({ mail: this.state.username, password: this.state.password })
         };
 
-        fetch('http://192.168.0.155:2222/authenticate', requestOptions)
+        fetch('http://192.168.0.174:2222/authenticate', requestOptions)
         .then(response => response.json())
         .then(data => {
             console.log('data:', data.success)
             console.log(this.props);
             if(data.success === true) {
                 localStorage.setItem('uniqueToken', data.token);
-                this.props.history.push('/home');
+                this.props.history.push('/posts');
             }
             else {
                 this.setState({

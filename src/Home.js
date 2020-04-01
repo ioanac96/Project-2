@@ -86,6 +86,8 @@ class Home extends React.Component {
         this.onLogOut = this.onLogOut.bind(this);
     }
 
+ 
+
     getPosts() {
         const requestOptions = {
             method: 'GET',
@@ -107,7 +109,7 @@ class Home extends React.Component {
         }
         */
 
-        // fetch('http://192.168.0.155:2222/api/posts', requestOptions)
+        // fetch('http://192.168.0.174:2222/api/posts', requestOptions)
         // .then(response => response.json())
         getMockedPosts()
         .then(data => {
@@ -127,7 +129,7 @@ class Home extends React.Component {
         //     }
         // };
 
-        // fetch('http://192.168.0.155:2222/api/user', requestOptions)
+        // fetch('http://192.168.0.174:2222/api/user', requestOptions)
         // .then(response => response.json())
         // .then(data => {
         //     console.log(data);
@@ -162,21 +164,21 @@ class Home extends React.Component {
                         <div className="first-column">
                         {
                             firstColumn.map((currentPost) => (
-                                <Post key={currentPost.id} post={currentPost} />
+                                <Post key={currentPost.id} post={currentPost} history={this.props.history} />
                             ))
                         }
                         </div>
                         <div className="second-column">
                         {
                             secondColumn.map((currentPost) => (
-                                <Post key={currentPost.id} post={currentPost} />
+                                <Post key={currentPost.id} post={currentPost} history={this.props.history} />
                             ))
                         }
                         </div>
                         <div className="third-column">
                         {
                             thirdColumn.map((currentPost) => (
-                                <Post key={currentPost.id} post={currentPost} />
+                                <Post key={currentPost.id} post={currentPost} history={this.props.history} />
                             ))
                         }
                         </div>
