@@ -1,6 +1,8 @@
 import React from 'react';
 import Post from './Post'
 import './Home.css'
+import AddPost from './AddPost';
+import { getPostsRequest, getUserRequest } from './requests';
 
 const response = {
     success: true,
@@ -89,31 +91,9 @@ class Home extends React.Component {
  
 
     getPosts() {
-        const requestOptions = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-access-token': localStorage.getItem('uniqueToken')
-            }
-        };
-        /*
-        {
-            success: true,
-            posts: [{
-                id: 1, 
-                title: 'titlu',
-                image: 'url',
-                description: 'descriere',
-                likes: 23
-            }]
-        }
-        */
-
-        // fetch('http://192.168.0.174:2222/api/posts', requestOptions)
-        // .then(response => response.json())
-        getMockedPosts()
+        // getMockedPosts()
+        getPostsRequest()
         .then(data => {
-            console.log(data.posts);
             this.setState({
                 postsArray: data.posts
             });
@@ -121,22 +101,13 @@ class Home extends React.Component {
     }
 
     componentDidMount(){
-        // const requestOptions = {
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'x-access-token': localStorage.getItem('uniqueToken')
-        //     }
-        // };
-
-        // fetch('http://192.168.0.174:2222/api/user', requestOptions)
-        // .then(response => response.json())
-        // .then(data => {
-        //     console.log(data);
-        //     if (data.success === false) {
-        //         this.onLogOut();
-        //     }
-        // });
+        getUserRequest()
+        .then(data => {
+            console.log(data);
+            if (data.success === false) {
+                this.onLogOut();
+            }
+        });
         this.getPosts();
 
     }
@@ -159,6 +130,11 @@ class Home extends React.Component {
         return (
             <div className="home">
                 <h1 className="home-page-title">This is the amazing Home page, enjoy!</h1>
+                <div className="container-for-add-post">
+                    <AddPost onAddSuccessful={() => {
+                        this.getPosts();
+                    }}/>
+                </div>
                 <div className="container">
                     <div className="all-posts">
                         <div className="first-column">

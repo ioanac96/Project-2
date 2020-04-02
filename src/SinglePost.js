@@ -1,5 +1,6 @@
 import React from 'react';
 import './SinglePost.css'
+import { getPostRequest } from './requests';
 
 const data = {
     success: true,
@@ -26,18 +27,12 @@ class SinglePost extends React.Component {
         this.getPost = this.getPost.bind(this);
     }
     getPost() {
-        const requestOptions = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-access-token': localStorage.getItem('uniqueToken')
-            }
-        };
-        // fetch('http://192.168.0.174:2222/api/posts/'+this.props.match.params.postId, requestOptions)
-        // .then(response => response.json())
-        getMockedPost()
+       
+        // getMockedPost()
+        getPostRequest(this.props.match.params.postId)
         .then(data => {
             if(data.success === false) {
+                console.log(data);
                 this.setState({
                     error: 'Post not found'
                 });
@@ -52,11 +47,18 @@ class SinglePost extends React.Component {
         
     }
 
+    userDidLogOut() {
+        const logOut = localStorage.getItem('uniqueToken') === null;
+         this.props.history.push('/login');
+    }
+
     componentDidMount() {
         this.getPost();
     }
 
     render(){
+        console.log(this.props.history);
+        this.userDidLogOut();
         const {image, title, description, likes} = this.state.post;
         if (this.state.error !== '')
             return (<div>{this.state.error}</div>);

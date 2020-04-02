@@ -84,3 +84,29 @@
     display: flex;
     justify-content: center;
 }
+
+.container-for-add-post {
+    display: flex;
+    justify-content: center;
+}
+
+.add-new-post-section {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 3px 6px #AEC3B0;
+    background-color: white;
+    padding: 10px;
+}
+
+.title-add-new-post {
+    align-self: center;
+    background-color: #124559;
+    color: #F7FFF7;
+    padding: 6px;
+
+}
+
+.add button {
+    margin: 0;
+    align-self: center;
+}

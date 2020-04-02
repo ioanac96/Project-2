@@ -1,4 +1,5 @@
 import React from 'react';
+import { loginRequest } from './requests';
 
 class Login extends React.Component {
     constructor(props){
@@ -22,17 +23,7 @@ class Login extends React.Component {
     
     onSubmit(){
         if (this.state.username === '' || this.state.password === '') return;
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ mail: this.state.username, password: this.state.password })
-        };
-
-        fetch('http://192.168.0.174:2222/authenticate', requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            console.log('data:', data.success)
-            console.log(this.props);
+        loginRequest(this.state.username, this.state.password).then(data => {
             if(data.success === true) {
                 localStorage.setItem('uniqueToken', data.token);
                 this.props.history.push('/posts');
