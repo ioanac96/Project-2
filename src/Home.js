@@ -94,6 +94,9 @@ class Home extends React.Component {
         // getMockedPosts()
         getPostsRequest()
         .then(data => {
+            data.posts.sort((a,b) => {
+               return b.id-a.id;
+            });
             this.setState({
                 postsArray: data.posts
             });
@@ -103,19 +106,20 @@ class Home extends React.Component {
     componentDidMount(){
         getUserRequest()
         .then(data => {
-            console.log(data);
             if (data.success === false) {
                 this.onLogOut();
             }
+            else {
+                this.getPosts();
+            }
         });
-        this.getPosts();
-
     }
 
     onLogOut() {
         localStorage.removeItem('uniqueToken');
         this.props.history.push('/login');
     }
+
 
     render() {
         const firstColumn = this.state.postsArray.filter((post, index) => {

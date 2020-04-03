@@ -1,6 +1,33 @@
 import React from 'react';
 import './SinglePost.css'
-import { getPostRequest } from './requests';
+import { getPostRequest, getUserRequest } from './requests';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import ImageGallery from 'react-image-gallery';
+
+const images = [
+    {
+      original: 'https://animalogic.ca/wp-content/uploads/2018/05/shutterstock_481623085.jpg',
+      thumbnail: 'https://animalogic.ca/wp-content/uploads/2018/05/shutterstock_481623085.jpg',
+    },
+    {
+      original: 'https://previews.123rf.com/images/foottoo/foottoo1706/foottoo170600933/80253466-cow-at-a-meadow-austria.jpg',
+      thumbnail: 'https://previews.123rf.com/images/foottoo/foottoo1706/foottoo170600933/80253466-cow-at-a-meadow-austria.jpg',
+    },
+    {
+      original: 'https://miro.medium.com/max/6528/1*-4y76__mIZjL4IRrESEbuA.jpeg',
+      thumbnail: 'https://miro.medium.com/max/6528/1*-4y76__mIZjL4IRrESEbuA.jpeg',
+    },
+    {
+        original: 'https://i.pinimg.com/originals/71/3e/85/713e8511c2cbaebf58d2870aff5260a6.jpg',
+        thumbnail: 'https://i.pinimg.com/originals/71/3e/85/713e8511c2cbaebf58d2870aff5260a6.jpg',
+    },
+    {
+        original: 'https://assets.change.org/photos/7/yk/ho/ghykhOwaTaYYwER-800x450-noPad.jpg?1528391927',
+        thumbnail: 'https://assets.change.org/photos/7/yk/ho/ghykhOwaTaYYwER-800x450-noPad.jpg?1528391927',
+    },
+  ];
+
 
 const data = {
     success: true,
@@ -25,6 +52,8 @@ class SinglePost extends React.Component {
             error: ''
         }
         this.getPost = this.getPost.bind(this);
+        this.onBack = this.onBack.bind(this);
+        this.whatToDo = this.whatToDo.bind(this);
     }
     getPost() {
        
@@ -47,31 +76,57 @@ class SinglePost extends React.Component {
         
     }
 
-    userDidLogOut() {
-        const logOut = localStorage.getItem('uniqueToken') === null;
-         this.props.history.push('/login');
+    componentDidMount() {
+        getUserRequest().then(data => {
+            if (data.success === true) {
+                this.getPost();
+            }
+            else {
+                this.props.history.push('/login');
+                localStorage.removeItem('uniqueToken');
+            }
+        });
+        
     }
 
-    componentDidMount() {
-        this.getPost();
+    onBack() {
+        this.props.history.push('/posts');
+    }
+
+    whatToDo(action) {
+        return() => {
+            if (action === 'like') {
+                console.log("You liked this post! Congrats!");
+            }
+            else {
+                console.log('Do not press here!');
+            }
+        }
     }
 
     render(){
         console.log(this.props.history);
-        this.userDidLogOut();
         const {image, title, description, likes} = this.state.post;
         if (this.state.error !== '')
             return (<div>{this.state.error}</div>);
 
         return (
             <div className="container-for-one-post">
+                <button className="back-button" onClick={this.onBack}>Back</button>
                 <div className="single post">
-                    <img alt="Something relevant for current post"  src={image} />
+                    <img alt="Something relevant for current post" className="single-image"  src={image} />
                     <div className="header-area">
-                        <h2 className="post-title" onClick={this.props.onClick}>{title}</h2>
-                        <div className="likes">{likes}</div>
+                        <h2 className="post-title">{title}</h2>
+                        <div className="likes-section">
+                            <FontAwesomeIcon icon={faHeart} className="heart" onClick={this.whatToDo('like')} />
+                            <div className="likes" onClick={this.whatToDo('nana')}>{likes}</div>
+                        </div>
+                        
                     </div>
                     <div className="description">{description}</div>
+                    <div>
+                        <ImageGallery items={images} />
+                    </div>
                 </div>
             </div>
         );

@@ -41,7 +41,7 @@
     box-shadow: 0px 3px 6px #AEC3B0;
 }
 
-.post img {
+.post .post-image {
     width: 400px;
     height: 300px;
     object-fit: cover;

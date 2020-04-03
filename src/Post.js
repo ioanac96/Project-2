@@ -1,26 +1,41 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 class Post extends React.Component {
     constructor(props){
         super(props);
 
-        this.goToSinglePost = this.goToSinglePost.bind(this);
+        this.whatToDo = this.whatToDo.bind(this);
     }
 
-    goToSinglePost() {
-        return  this.props.history.push('/posts/'+this.props.post.id);
+    whatToDo(action) {
+        return() => {
+            if (action === 'goToSinglePost') {
+                this.props.history.push('/posts/' + this.props.post.id);
+            }
+            else if (action === 'like') {
+                console.log("You liked this post! Congrats!");
+            }
+            else {
+                console.log('Do not press here!');
+            }
+        }
     }
     
     render() {
         const {title, image, description, likes} = this.props.post;
         return ( 
             <div className="post">
-                <img alt="Something relevant for current post" src={image} />
+                <img alt="Something relevant for current post" src={image} className="post-image" onClick={this.whatToDo('goToSinglePost')} />
                 <div className="header-area">
-                    <h2 className="post-title" onClick={this.goToSinglePost}>{title}</h2>
-                    <div className="likes">{likes}</div>
+                    <h2 className="post-title" onClick={this.whatToDo('goToSinglePost')}>{title}</h2>
+                    <div className="likes-section" >
+                            <FontAwesomeIcon icon={faHeart} className="heart" onClick={this.whatToDo('like')} />
+                            <div className="likes" onClick={this.whatToDo('nana')}>{likes}</div>
+                    </div>
                 </div>
-                <div className="description">{description}</div>
+                <div className="description" onClick={this.whatToDo('goToSinglePost')}>{description}</div>
             </div>
         )
     }
