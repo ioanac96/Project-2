@@ -43,6 +43,9 @@
     color: #124559;
     text-transform: capitalize;
     max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     
 }
 
@@ -71,10 +74,6 @@
     justify-content: center;
 }
 
-.container-for-add-post {
-    display: flex;
-    justify-content: center;
-}
 
 .add-new-post-section {
     display: flex;
@@ -82,6 +81,7 @@
     box-shadow: 0px 3px 6px #AEC3B0;
     background-color: white;
     padding: 10px;
+    width: 313px;
 }
 
 .title-add-new-post {
@@ -146,6 +146,7 @@
 
 .active {
         background-color: #598392;
+        
 }
 
 .add-post-image:focus,
@@ -155,6 +156,57 @@
 }
 
 
+.modal button {
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #124559;
+    color: #F7FFF7;
+}
 
+.posts-page button {
+    color: #F7FFF7;
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #124559;
 
+}
+
+ .modal-button {
+    color: #F7FFF7;
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #124559;
+    margin-left: 50vw;
+
+}
+
+.active-modal {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+    z-index: 9;
+    
+}
+
+.container .modal {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-background {
+    z-index: 2;
+    position:fixed;
+    background-color: grey;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
 

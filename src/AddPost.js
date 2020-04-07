@@ -41,7 +41,7 @@ class AddPost extends React.Component {
 
         return (
             <div className="add-new-post-section">
-                <div className="title-add-new-post">Add new post:</div>
+                {/* <div className="title-add-new-post">Add new post:</div> */}
                 <div>
                     <label htmlFor="image">Image:</label>
                     <input  type="text" id="image" className="add-post-image"  placeholder="Add image url" onChange={this.onInputChange('image')} />

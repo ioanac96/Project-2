@@ -78,12 +78,14 @@ import Header from './Header';
 //     },400);
 //  })
 
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
         
         this.state = {
-            postsArray: []
+            postsArray: [],
+            show: false
         };
 
         // this.onLogOut = this.onLogOut.bind(this);
@@ -102,9 +104,14 @@ class Home extends React.Component {
                 postsArray: data.posts
             });
         });
+
+        this.showModal = this.showModal.bind(this);
     }
 
+
+
     componentDidMount(){
+    
         getUserRequest()
         .then(data => {
             if (data.success === false) {
@@ -116,9 +123,16 @@ class Home extends React.Component {
         });
     }
 
+    showModal() {
+        this.setState({
+            show: !this.state.show
+        });
+    }
+
 
 
     render() {
+        console.log(this.state.show);
         const firstColumn = this.state.postsArray.filter((post, index) => {
              return(index % 3 === 0);
         });
@@ -130,14 +144,15 @@ class Home extends React.Component {
         });
         return (
             <div className="posts-page">
+                
                 <Header current={this.props.match.path} history={this.props.history} />
-                <div className="container-for-add-post">
-                    <AddPost onAddSuccessful={() => {
-                        this.getPosts();
-                    }}/>
-                </div>
+                <button className="modal-button" onClick={() => {this.showModal()}}>Add new post</button>             
                 <div className="container">
-                    <div className="all-posts">
+                    <div className="modal">  
+                            <Modal  show={this.state.show} onClose={this.showModal}/>
+                            
+                    </div>  
+                   <div className="all-posts">
                         <div className="first-column">
                         {
                             firstColumn.map((currentPost) => (
@@ -171,6 +186,29 @@ class Home extends React.Component {
         )
     }
 
+}
+
+class Modal extends React.Component {
+    render() {
+        if(!this.props.show){
+            return null;
+        }
+        return (
+            <React.Fragment>
+                <div className="modal-background"></div>
+                <div className="active-modal">
+                            <AddPost onAddSuccessful={() => {
+                                this.getPosts();
+                            }}/>
+                    <div className="modal-actions">
+                        <div onClick={() => {return this.props.onClose()}}>&times;</div>
+                    </div>
+                    
+                </div>
+            </React.Fragment>
+        
+        )
+    }
 }
 
 export default Home;
