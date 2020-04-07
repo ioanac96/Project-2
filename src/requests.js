@@ -24,6 +24,13 @@ export const loginRequest = (username, password) => {
     })).then(response => response.json());
 }
 
+export const registrationRequest = (username, password) => {
+    return fetch(hostName + '/register', formRequestOptions(false, 'POST', {
+        mail: username,
+        password: password
+    })).then(response => response.json());
+}
+
 export const getPostsRequest = () => {
     return fetch(hostName + '/api/posts', formRequestOptions(true)).then(response => response.json());
 }
@@ -41,6 +48,13 @@ export const addPostRequest = (title, description, image) => {
         title: title,
         description: description,
         image: image
+    }))
+    .then(response => response.json());
+}
+
+export const likeRequest = (postId, value) => {
+    return fetch(hostName + '/api/posts/' + postId, formRequestOptions(true, 'PATCH', {
+        liked: value
     }))
     .then(response => response.json());
 }

@@ -8,6 +8,7 @@ import {
 import AuthenticationForm from './AuthenticationForm';
 import Home from './Home';
 import SinglePost from './SinglePost';
+import MyProfile from './MyProfile';
 
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Route path="/register" component={AuthenticationForm} />
             <Route exact path="/posts" component={Home} />
             <Route path="/posts/:postId" component={SinglePost} />
+            <Route path="/my-profile" component={MyProfile} />
           </Switch>
         </div>
       </Router>

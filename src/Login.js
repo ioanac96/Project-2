@@ -1,5 +1,6 @@
 import React from 'react';
 import { loginRequest } from './requests';
+import Input from './Input.js';
 
 class Login extends React.Component {
     constructor(props){
@@ -10,13 +11,13 @@ class Login extends React.Component {
             error: ''
         }
         this.onSubmit = this.onSubmit.bind(this);
+
     }
 
     onChange(inputName) {
         return (event) => {
             const newObject = {};
             newObject[inputName] = event.target.value;
-            console.log(newObject);
             this.setState(newObject);
         }
     }
@@ -37,18 +38,18 @@ class Login extends React.Component {
 
     }
 
-
+    
     render() {
-        console.log(JSON.stringify({ mail: this.state.username, password: this.state.password  }));
+        // console.log(JSON.stringify({ mail: this.state.username, password: this.state.password  }));
         const {username, password, error} = this.state;
         return (
             <div>
                 <div>
-                    <label for="username">Username:</label>
-                    <input  type="text" id="username" value={username} onChange={this.onChange('username')} placeholder="Username" />
+                    <label htmlFor="email">Email:</label>
+                    <Input value={username} type="text" id="email"    placeholder="Email" onChange={this.onChange('username')} />
                 </div>
                 <div>
-                    <label for="password">Password:</label>
+                    <label htmlFor="password">Password:</label>
                     <input type="password" id="password" value={password} onChange={this.onChange('password')} placeholder="Password" />
                 </div>
                 <div className="submit">

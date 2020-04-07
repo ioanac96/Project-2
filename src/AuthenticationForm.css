@@ -20,7 +20,6 @@
   .navigation:hover{
     background-color: #598392;
     font-size: 16px;
-    
   }
   
   .active {
@@ -63,9 +62,13 @@
   }
   
 
-  input[type=text]:focus {
+  .correct-format:focus {
       outline-color: #598392;     
   }
+
+  .name:focus {
+    outline-color: #598392;     
+}
 
   input[type=password]:focus {
     outline-color: #598392;     
@@ -112,4 +115,8 @@
 .error {
   margin: 10px 0px;
   color: red;
+}
+
+.incorrect-format:focus {
+  outline-color:red;
 }

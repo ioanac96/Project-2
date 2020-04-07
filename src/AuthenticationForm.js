@@ -8,7 +8,6 @@ import {
 
 class AuthenticationForm extends React.Component {
     render() {
-        console.log('AF:',this.props.history);
         const action = this.props.match.path === '/login' ? 'Login' : 'Register';
         return (
             <div className="login-page">
@@ -19,7 +18,7 @@ class AuthenticationForm extends React.Component {
                     </div>
                     <div className="below-part">
                         {
-                            action === 'Login' ? <Login history={this.props.history} /> : <Register />
+                            action === 'Login' ? <Login history={this.props.history} /> : <Register history={this.props.history} />
                         }
                     </div>
                 </div>

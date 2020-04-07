@@ -1,6 +1,6 @@
 import React from 'react';
 import './SinglePost.css'
-import { getPostRequest, getUserRequest } from './requests';
+import { getPostRequest, getUserRequest, likeRequest } from './requests';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import ImageGallery from 'react-image-gallery';
@@ -29,20 +29,20 @@ const images = [
   ];
 
 
-const data = {
-    success: true,
-    post: {
-        id: 1, 
-        title: 'titlu',
-        image: 'https://images.earthtouchnews.com/media/734888/Baby_bear_2014-11-25.jpg?width=710&height=10000&mode=max&upscale=false',
-        description: 'descriere',
-        likes: 23
-    }
-};
+// const data = {
+//     success: true,
+//     post: {
+//         id: 1, 
+//         title: 'titlu',
+//         image: 'https://images.earthtouchnews.com/media/734888/Baby_bear_2014-11-25.jpg?width=710&height=10000&mode=max&upscale=false',
+//         description: 'descriere',
+//         likes: 23
+//     }
+// };
 
-const getMockedPost = () => new Promise((resolve) => {
-    resolve(data);
-})
+// const getMockedPost = () => new Promise((resolve) => {
+//     resolve(data);
+// })
 
 class SinglePost extends React.Component {
     constructor(props) {
@@ -61,7 +61,6 @@ class SinglePost extends React.Component {
         getPostRequest(this.props.match.params.postId)
         .then(data => {
             if(data.success === false) {
-                console.log(data);
                 this.setState({
                     error: 'Post not found'
                 });
@@ -96,7 +95,15 @@ class SinglePost extends React.Component {
     whatToDo(action) {
         return() => {
             if (action === 'like') {
-                console.log("You liked this post! Congrats!");
+                const postId = this.props.match.params.postId;
+                const value = this.state.post.liked;
+                likeRequest(postId, !value)
+                .then(data => {
+                    console.log(data);
+                    if (data.success === true) {
+                        this.getPost();
+                    }
+                })
             }
             else {
                 console.log('Do not press here!');
@@ -105,7 +112,6 @@ class SinglePost extends React.Component {
     }
 
     render(){
-        console.log(this.props.history);
         const {image, title, description, likes} = this.state.post;
         if (this.state.error !== '')
             return (<div>{this.state.error}</div>);
@@ -118,7 +124,7 @@ class SinglePost extends React.Component {
                     <div className="header-area">
                         <h2 className="post-title">{title}</h2>
                         <div className="likes-section">
-                            <FontAwesomeIcon icon={faHeart} className="heart" onClick={this.whatToDo('like')} />
+                            <FontAwesomeIcon icon={faHeart} className={this.state.post.liked === false ? "not-liked" : "heart"} onClick={this.whatToDo('like')} />
                             <div className="likes" onClick={this.whatToDo('nana')}>{likes}</div>
                         </div>
                         

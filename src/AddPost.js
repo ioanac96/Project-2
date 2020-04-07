@@ -37,26 +37,25 @@ class AddPost extends React.Component {
     }
 
     render() {
-        console.log('my state', this.state);
         const {image} = this.state;
 
         return (
             <div className="add-new-post-section">
                 <div className="title-add-new-post">Add new post:</div>
                 <div>
-                    <label for="image">Image:</label>
-                    <input  type="text" id="image"  placeholder="Add image url" onChange={this.onInputChange('image')} />
+                    <label htmlFor="image">Image:</label>
+                    <input  type="text" id="image" className="add-post-image"  placeholder="Add image url" onChange={this.onInputChange('image')} />
                     {
-                        image !== '' ? <img  src={image} /> : null
+                        image !== '' ? <img alt='' src={image} /> : null
                     }
                 </div>
                 <div>
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" placeholder="Title" onChange={this.onInputChange('title')} />
+                    <label htmlFor="title">Title:</label>
+                    <input type="text" id="title" className="add-post-title" placeholder="Title" onChange={this.onInputChange('title')} />
                 </div>
                 <div>
-                    <label for="description">Description:</label>
-                    <input type="text" id="description" placeholder="Description" onChange={this.onInputChange('description')} />
+                    <label htmlFor="description">Description:</label>
+                    <input type="text" id="description" className="add-post-description" placeholder="Description" onChange={this.onInputChange('description')} />
                 </div>
                 <div className="add submit">
                     <button onClick={this.onAdd}>Add</button>

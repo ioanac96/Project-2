@@ -15,23 +15,6 @@
     margin: 10px;
 }
 
-.home-button {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.home-button button {
-    padding: 6px 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    background-color: #124559;
-    color: #F7FFF7;
-    margin-right: 60px;
-}
-
-.home-button button:hover {
-    outline-color: #01161E;  
-}
 
 .post {
     /* border: 1px solid #22223b; */
@@ -39,6 +22,7 @@
     background-color: white;
     color: #01161E;
     box-shadow: 0px 3px 6px #AEC3B0;
+    max-width: 400px;
 }
 
 .post .post-image {
@@ -58,10 +42,11 @@
 .post-title {
     color: #124559;
     text-transform: capitalize;
+    max-width: 90%;
     
 }
 
-.home {
+.posts-page {
     background-color: #F7FFF7;
 }
 .page {
@@ -72,6 +57,7 @@
 .description {
     margin: 7px;
     margin: 5px 10px;
+    padding-bottom: 8px;
 }
 
 .likes {
@@ -110,3 +96,65 @@
     margin: 0;
     align-self: center;
 }
+
+
+.posts-header {
+    display: inline-block;
+    background-color: #124559;
+    color: #F7FFF7;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+
+.link-to-my-profile,
+.link-to-log-out,
+.link-to-home {
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #F7FFF7;
+    cursor: pointer;
+}
+
+.link-to-home {
+    float: left;
+}
+
+.link-to-my-profile {
+    float: right;
+}
+
+.link-to-log-out {
+    float: right;
+}
+
+.link-to-my-profile:hover {
+    background-color: #598392;
+    font-size: 16px;
+}
+
+.link-to-home:hover {
+    background-color: #598392;
+    font-size: 16px;
+}
+.link-to-log-out:hover {
+    background-color: #598392;
+    font-size: 16px;
+}
+
+.active {
+        background-color: #598392;
+}
+
+.add-post-image:focus,
+.add-post-title:focus,
+.add-post-description:focus {
+    outline-color: #598392;
+}
+
+
+
+
+
