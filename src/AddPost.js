@@ -26,6 +26,7 @@ class AddPost extends React.Component {
 
     onAdd() {
         const {title, description, image} = this.state;
+        if(title  === '' || description === '' || image === '') return;
         addPostRequest(title, description, image)
         .then(data => {
             console.log(data);

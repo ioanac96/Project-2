@@ -210,3 +210,26 @@
     opacity: 0.5;
 }
 
+.close {
+    font-size: 28px;
+    font-style: bold;
+    float: right;
+    color: #F7FFF7;
+}
+
+.close:hover {
+    color: #124559;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+.close:focus {
+    color: #124559;
+    text-decoration: none;
+    cursor: pointer;
+    outline-color: #598392;
+  }
+
+
+

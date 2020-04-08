@@ -195,15 +195,14 @@ class Modal extends React.Component {
         }
         return (
             <React.Fragment>
-                <div className="modal-background"></div>
+                <div className="modal-background" onClick={() => {return this.props.onClose()}}></div>
                 <div className="active-modal">
-                            <AddPost onAddSuccessful={() => {
-                                this.getPosts();
-                            }}/>
-                    <div className="modal-actions">
-                        <div onClick={() => {return this.props.onClose()}}>&times;</div>
+                     <div className="modal-actions">
+                        <div className="close" onClick={() => {return this.props.onClose()}}>&times;</div>
                     </div>
-                    
+                    <AddPost onAddSuccessful={() => {
+                        this.getPosts();
+                    }}/>
                 </div>
             </React.Fragment>
         
